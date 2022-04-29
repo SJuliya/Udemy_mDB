@@ -14,6 +14,11 @@
 
 'use strict';
 
+const promo = document.querySelectorAll('.promo__adv img');
+const promoBg = document.querySelector('.promo__bg');
+const genre = promoBg.querySelector('.promo__genre');
+const listFilmItem = document.querySelectorAll('.promo__interactive-item');
+
 const movieDB = {
     movies: [
         "Логан",
@@ -23,4 +28,17 @@ const movieDB = {
         "Скотт Пилигрим против..."
     ]
 };
+
+promo.forEach(item => {
+    item.remove();
+});
+
+genre.textContent = 'драма';
+promoBg.style.backgroundImage = 'url(img/bg.jpg)';
+
+movieDB.movies.sort();
+
+listFilmItem.forEach((item, index) => {
+    item.childNodes[0].textContent = `${index + 1}. ${movieDB.movies[index]}`;
+});
 
